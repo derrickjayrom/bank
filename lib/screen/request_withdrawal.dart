@@ -1,3 +1,4 @@
+import 'package:bank/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
 
 class RequestWithdrawal extends StatefulWidget {
@@ -38,53 +39,7 @@ class _RequestWithdrawalState extends State<RequestWithdrawal> {
 
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
                 ),
-                Center(
-                  child: Container(
-                    padding: EdgeInsets.only(top: 24, left: 24, right: 24),
-                    width: double.infinity,
-                    height: 352,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Amount to withdraw'),
-                        SizedBox(height: 8),
-                        Container(
-                          color: Colors.transparent,
-                          height: 44,
-                          width: double.infinity,
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [Text('Balance:'), Text('\$9,476.00')],
-                        ),
-                        SizedBox(height: 12),
-                        Text('Country'),
-                        SizedBox(height: 8),
-                        Container(
-                          height: 44,
-                          width: double.infinity,
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey.shade400),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                CustomTextfield(),
               ],
             ),
           ),
