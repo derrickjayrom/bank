@@ -12,6 +12,12 @@ class _CustomTextfieldState extends State<CustomTextfield> {
   String selectedCountry = 'USA';
   String currencySymbol = '\$';
 
+  @override
+  void dispose() {
+    amountController.dispose();
+    super.dispose();
+  }
+
   final Map<String, String> countryCurrencyMap = {
     'USA': '\$',
     'UK': '£',
@@ -39,7 +45,7 @@ class _CustomTextfieldState extends State<CustomTextfield> {
             SizedBox(height: 8),
             TextField(
               controller: amountController,
-              keyboardType: TextInputType.number,
+              keyboardType: TextInputType.numberWithOptions(decimal: true),
               decoration: InputDecoration(
                 prefixText: ' $currencySymbol ',
                 contentPadding: EdgeInsets.symmetric(
@@ -62,7 +68,6 @@ class _CustomTextfieldState extends State<CustomTextfield> {
             DropdownButtonFormField<String>(
               value: selectedCountry,
               decoration: InputDecoration(
-                labelText: 'Select Country',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
