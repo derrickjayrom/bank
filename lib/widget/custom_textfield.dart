@@ -9,14 +9,10 @@ class CustomTextfield extends StatefulWidget {
 
 class _CustomTextfieldState extends State<CustomTextfield> {
   final TextEditingController amountController = TextEditingController();
+  final TextEditingController countryController = TextEditingController();
+
   String selectedCountry = 'USA';
   String currencySymbol = '\$';
-
-  @override
-  void dispose() {
-    amountController.dispose();
-    super.dispose();
-  }
 
   final Map<String, String> countryCurrencyMap = {
     'USA': '\$',
@@ -28,27 +24,43 @@ class _CustomTextfieldState extends State<CustomTextfield> {
   };
 
   @override
+  void initState() {
+    super.initState();
+    countryController.text = selectedCountry;
+  }
+
+  @override
+  void dispose() {
+    amountController.dispose();
+    countryController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        padding: EdgeInsets.only(top: 24, left: 24, right: 24),
+        padding: const EdgeInsets.only(top: 24, left: 24, right: 24),
         width: double.infinity,
         height: 352,
         decoration: BoxDecoration(
-          color: Color(0xFFFFFFFF),
+          color: const Color(0xFFFFFFFF),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Amount to withdraw'),
-            SizedBox(height: 8),
+            // === Amount Field ===
+            const Text('Amount to withdraw'),
+            const SizedBox(height: 8),
             TextField(
               controller: amountController,
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
+              keyboardType: const TextInputType.numberWithOptions(
+                decimal: true,
+              ),
               decoration: InputDecoration(
                 prefixText: ' $currencySymbol ',
-                contentPadding: EdgeInsets.symmetric(
+                contentPadding: const EdgeInsets.symmetric(
                   horizontal: 16,
                   vertical: 12.5,
                 ),
@@ -57,28 +69,56 @@ class _CustomTextfieldState extends State<CustomTextfield> {
                 ),
               ),
             ),
-            SizedBox(height: 8),
+
+            const SizedBox(height: 8),
+
+            // === Balance ===
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [Text('Balance:'), Text('\$9,476.00')],
+              children: const [
+                Text('Balance:'),
+                SizedBox(width: 4),
+                Text('\$9,476.00'),
+              ],
             ),
-            SizedBox(height: 12),
-            Text('Country'),
-            SizedBox(height: 8),
-            DropdownButtonFormField<String>(
-              value: selectedCountry,
-              decoration: InputDecoration(
+
+            const SizedBox(height: 12),
+
+            // === Country Selector ===
+            const Text('Country'),
+            const SizedBox(height: 8),
+
+            // Material 3 DropdownMenu styled like your old dropdown
+            DropdownMenu<String>(
+              controller: countryController,
+              initialSelection: selectedCountry,
+              width: MediaQuery.of(context).size.width - 48,
+              textStyle: const TextStyle(fontSize: 14, color: Colors.black),
+              menuStyle: MenuStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.white),
+                elevation: MaterialStateProperty.all(2),
+                shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+              inputDecorationTheme: InputDecorationTheme(
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12.5,
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
-              items: countryCurrencyMap.keys.map((country) {
-                return DropdownMenuItem<String>(
+              dropdownMenuEntries: countryCurrencyMap.keys.map((country) {
+                return DropdownMenuEntry<String>(
                   value: country,
-                  child: Text(country),
+                  label: country,
                 );
               }).toList(),
-              onChanged: (value) {
+              onSelected: (value) {
                 if (value != null) {
                   setState(() {
                     selectedCountry = value;

@@ -1,131 +1,47 @@
+import 'package:bank/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextfield extends StatefulWidget {
-  const CustomTextfield({super.key});
+class RequestWithdrawal extends StatefulWidget {
+  const RequestWithdrawal({super.key});
 
   @override
-  State<CustomTextfield> createState() => _CustomTextfieldState();
+  State<RequestWithdrawal> createState() => _RequestWithdrawalState();
 }
 
-class _CustomTextfieldState extends State<CustomTextfield> {
-  final TextEditingController amountController = TextEditingController();
-  final TextEditingController countryController = TextEditingController();
-
-  String selectedCountry = 'USA';
-  String currencySymbol = '\$';
-
-  final Map<String, String> countryCurrencyMap = {
-    'USA': '\$',
-    'UK': '£',
-    'Europe': '€',
-    'Ghana': '₵',
-    'Nigeria': '₦',
-    'Japan': '¥',
-  };
-
-  @override
-  void initState() {
-    super.initState();
-    countryController.text = selectedCountry;
-  }
-
-  @override
-  void dispose() {
-    amountController.dispose();
-    countryController.dispose();
-    super.dispose();
-  }
-
+class _RequestWithdrawalState extends State<RequestWithdrawal> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        padding: const EdgeInsets.only(top: 24, left: 24, right: 24),
-        width: double.infinity,
-        height: 352,
-        decoration: BoxDecoration(
-          color: const Color(0xFFFFFFFF),
-          borderRadius: BorderRadius.circular(12),
-        ),
+    return Scaffold(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // === Amount Field ===
-            const Text('Amount to withdraw'),
-            const SizedBox(height: 8),
-            TextField(
-              controller: amountController,
-              keyboardType: const TextInputType.numberWithOptions(
-                decimal: true,
-              ),
-              decoration: InputDecoration(
-                prefixText: ' $currencySymbol ',
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 12.5,
+            Padding(
+              padding: EdgeInsets.only(top: 56, left: 24),
+              child: Container(
+                height: 44,
+                width: 44,
+                decoration: BoxDecoration(
+                  color: Color(0xFFF2F2F2),
+                  borderRadius: BorderRadius.circular(99),
                 ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
+
+                child: Icon(Icons.arrow_back_ios_new_rounded),
               ),
             ),
-
-            const SizedBox(height: 8),
-
-            // === Balance ===
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
-                Text('Balance:'),
-                SizedBox(width: 4),
-                Text('\$9,476.00'),
-              ],
-            ),
-
-            const SizedBox(height: 12),
-
-            // === Country Selector ===
-            const Text('Country'),
-            const SizedBox(height: 8),
-
-            // Material 3 DropdownMenu styled like your old dropdown
-            DropdownMenu<String>(
-              controller: countryController,
-              initialSelection: selectedCountry,
-              width: MediaQuery.of(context).size.width - 48,
-              textStyle: const TextStyle(fontSize: 14, color: Colors.black),
-              menuStyle: MenuStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.white),
-                elevation: MaterialStateProperty.all(2),
-                shape: MaterialStateProperty.all(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+            SizedBox(height: 20),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Request withdrawal',
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
                   ),
-                ),
+                  CustomTextfield(),
+                ],
               ),
-              inputDecorationTheme: InputDecorationTheme(
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 12.5,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              dropdownMenuEntries: countryCurrencyMap.keys.map((country) {
-                return DropdownMenuEntry<String>(
-                  value: country,
-                  label: country,
-                );
-              }).toList(),
-              onSelected: (value) {
-                if (value != null) {
-                  setState(() {
-                    selectedCountry = value;
-                    currencySymbol = countryCurrencyMap[value]!;
-                  });
-                }
-              },
             ),
           ],
         ),
