@@ -1,3 +1,4 @@
+import 'package:bank/widget/custom_backnavigator.dart';
 import 'package:bank/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
 
@@ -18,16 +19,7 @@ class _RequestWithdrawalState extends State<RequestWithdrawal> {
           children: [
             Padding(
               padding: EdgeInsets.only(top: 56, left: 24),
-              child: Container(
-                height: 44,
-                width: 44,
-                decoration: BoxDecoration(
-                  color: Color(0xFFF2F2F2),
-                  borderRadius: BorderRadius.circular(99),
-                ),
-
-                child: Icon(Icons.arrow_back_ios_new_rounded),
-              ),
+              child: CustomBacknavigator(),
             ),
             SizedBox(height: 20),
             Padding(

@@ -50,7 +50,6 @@ class _CustomTextfieldState extends State<CustomTextfield> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // === Amount Field ===
             const Text('Amount to withdraw'),
             const SizedBox(height: 8),
             TextField(
@@ -72,7 +71,6 @@ class _CustomTextfieldState extends State<CustomTextfield> {
 
             const SizedBox(height: 8),
 
-            // === Balance ===
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: const [
@@ -84,20 +82,19 @@ class _CustomTextfieldState extends State<CustomTextfield> {
 
             const SizedBox(height: 12),
 
-            // === Country Selector ===
             const Text('Country'),
             const SizedBox(height: 8),
 
-            // Material 3 DropdownMenu styled like your old dropdown
             DropdownMenu<String>(
+              trailingIcon: Icon(Icons.arrow_drop_down),
               controller: countryController,
               initialSelection: selectedCountry,
               width: MediaQuery.of(context).size.width - 48,
               textStyle: const TextStyle(fontSize: 14, color: Colors.black),
               menuStyle: MenuStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.white),
-                elevation: MaterialStateProperty.all(2),
-                shape: MaterialStateProperty.all(
+                backgroundColor: WidgetStateProperty.all(Colors.white),
+                elevation: WidgetStateProperty.all(2),
+                shape: WidgetStateProperty.all(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),

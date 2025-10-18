@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// 🟢 Main Appbar Widget
 class CustomAppbar extends StatefulWidget {
   const CustomAppbar({super.key});
 
@@ -77,6 +76,7 @@ class _NotificationIconState extends State<NotificationIcon> {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      clipBehavior: Clip.none,
       alignment: Alignment.topRight,
       children: [
         GestureDetector(
@@ -93,13 +93,13 @@ class _NotificationIconState extends State<NotificationIcon> {
         ),
         if (widget.notificationCount > 0)
           Positioned(
-            top: 4,
+            top: -8,
             right: 4,
             child: Container(
               height: 14,
               width: 14,
               decoration: BoxDecoration(
-                color: Colors.lightGreenAccent,
+                color: Color(0xFFF5FFDC),
                 borderRadius: BorderRadius.circular(7),
               ),
               child: Center(
