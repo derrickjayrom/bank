@@ -10,6 +10,218 @@ class PaymentMethods extends StatefulWidget {
 }
 
 class _PaymentMethodsState extends State<PaymentMethods> {
+  /// Bottom Sheet Function
+  void _showAddNewBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) {
+        String selectedMethod = 'Zelle';
+        bool makePrimary = false;
+
+        return DraggableScrollableSheet(
+          expand: false,
+          initialChildSize: 0.7,
+          minChildSize: 0.4,
+          maxChildSize: 0.95,
+          builder: (context, scrollController) {
+            return StatefulBuilder(
+              builder: (context, setModalState) {
+                return SingleChildScrollView(
+                  controller: scrollController,
+                  padding: EdgeInsets.only(
+                    left: 24,
+                    right: 24,
+                    top: 16,
+                    bottom: MediaQuery.of(context).viewInsets.bottom + 24,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      /// Header
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Add payment method',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.close, size: 22),
+                            onPressed: () => Navigator.pop(context),
+                          ),
+                        ],
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      /// Payment method type
+                      const Text(
+                        'Payment method type',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      DropdownButtonFormField<String>(
+                        value: selectedMethod,
+                        decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 12,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        items: const [
+                          DropdownMenuItem(
+                            value: 'Zelle',
+                            child: Text('Zelle'),
+                          ),
+                          DropdownMenuItem(
+                            value: 'PayPal',
+                            child: Text('PayPal'),
+                          ),
+                          DropdownMenuItem(
+                            value: 'Bank Transfer',
+                            child: Text('Bank Transfer'),
+                          ),
+                        ],
+                        onChanged: (value) => setModalState(
+                          () => selectedMethod = value ?? 'Zelle',
+                        ),
+                      ),
+
+                      const SizedBox(height: 16),
+
+                      /// Zelle email or phone
+                      const Text(
+                        'Zelle email or phone',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Enter Zelle email or phone number',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 12,
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 16),
+
+                      /// Name enrolled under
+                      const Text(
+                        'Name enrolled under',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Enter enrolled name',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 12,
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 12),
+
+                      /// Make primary checkbox
+                      Row(
+                        children: [
+                          Checkbox(
+                            value: makePrimary,
+                            onChanged: (value) => setModalState(
+                              () => makePrimary = value ?? false,
+                            ),
+                          ),
+                          const Text(
+                            'Make primary',
+                            style: TextStyle(fontSize: 14),
+                          ),
+                        ],
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      /// Buttons Row
+                      Row(
+                        children: [
+                          // Add button
+                          ElevatedButton(
+                            onPressed: () => Navigator.pop(context),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xFFFF3366), // pink
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 28,
+                                vertical: 12,
+                              ),
+                            ),
+                            child: const Text(
+                              'Add',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+
+                          // Cancel button
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: const Text(
+                              'Cancel',
+                              style: TextStyle(
+                                color: Color(0xFF666666),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              },
+            );
+          },
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,9 +245,14 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                   ),
                   const SizedBox(height: 20),
 
+                  /// Bank container
                   Center(
                     child: Container(
-                      padding: EdgeInsets.only(top: 24, left: 24, right: 24),
+                      padding: const EdgeInsets.only(
+                        top: 24,
+                        left: 24,
+                        right: 24,
+                      ),
                       width: double.infinity,
                       height: 244,
                       decoration: BoxDecoration(
@@ -44,12 +261,13 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                       ),
                       child: Column(
                         children: [
+                          /// First bank
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                                children: const [
                                   Text(
                                     '213340546',
                                     style: TextStyle(
@@ -71,7 +289,7 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
+                                children: const [
                                   Text(
                                     'Mustapha Diyaol-Haqq',
                                     style: TextStyle(
@@ -95,22 +313,28 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 6),
+
+                          const SizedBox(height: 6),
+
+                          /// Divider
                           Container(
                             decoration: BoxDecoration(
                               border: Border.all(width: 0.001),
-                              color: Color(0xFFF2F2F2),
+                              color: const Color(0xFFF2F2F2),
                             ),
                             height: 0,
                             width: double.infinity,
                           ),
-                          SizedBox(height: 6),
+
+                          const SizedBox(height: 6),
+
+                          /// Second bank
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                                children: const [
                                   Text(
                                     '213340546',
                                     style: TextStyle(
@@ -132,7 +356,7 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
+                                children: const [
                                   Text(
                                     'Mustapha Diyaol-Haqq',
                                     style: TextStyle(
@@ -146,10 +370,13 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 32),
+
+                          const SizedBox(height: 32),
+
+                          /// Action button (unchanged)
                           CustomActionButton(
                             label: 'Add new',
-                            onPressed: () {},
+                            onPressed: () => _showAddNewBottomSheet(context),
                           ),
                         ],
                       ),
