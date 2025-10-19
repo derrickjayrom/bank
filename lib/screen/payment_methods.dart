@@ -35,8 +35,6 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                 return SingleChildScrollView(
                   controller: scrollController,
                   padding: EdgeInsets.only(
-                    left: 24,
-                    right: 24,
                     top: 16,
                     bottom: MediaQuery.of(context).viewInsets.bottom + 24,
                   ),
@@ -47,11 +45,16 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
-                            'Add payment method',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
+                          Expanded(
+                            child: Center(
+                              child: Text(
+                                'Add payment method',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 0.15,
+                                ),
+                              ),
                             ),
                           ),
                           IconButton(
@@ -61,155 +64,184 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                         ],
                       ),
 
-                      const SizedBox(height: 20),
-
-                      /// Payment method type
-                      const Text(
-                        'Payment method type',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      DropdownButtonFormField<String>(
-                        value: selectedMethod,
-                        decoration: InputDecoration(
-                          contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 12,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                        items: const [
-                          DropdownMenuItem(
-                            value: 'Zelle',
-                            child: Text('Zelle'),
-                          ),
-                          DropdownMenuItem(
-                            value: 'PayPal',
-                            child: Text('PayPal'),
-                          ),
-                          DropdownMenuItem(
-                            value: 'Bank Transfer',
-                            child: Text('Bank Transfer'),
-                          ),
-                        ],
-                        onChanged: (value) => setModalState(
-                          () => selectedMethod = value ?? 'Zelle',
-                        ),
-                      ),
-
                       const SizedBox(height: 16),
 
-                      /// Zelle email or phone
-                      const Text(
-                        'Zelle email or phone',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 24,
+                          vertical: 16,
                         ),
-                      ),
-                      const SizedBox(height: 8),
-                      TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Enter Zelle email or phone number',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 12,
+                        decoration: BoxDecoration(
+                          border: BoxBorder.fromLTRB(
+                            top: BorderSide(color: Colors.grey),
                           ),
                         ),
-                      ),
-
-                      const SizedBox(height: 16),
-
-                      /// Name enrolled under
-                      const Text(
-                        'Name enrolled under',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Enter enrolled name',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 12,
-                          ),
-                        ),
-                      ),
-
-                      const SizedBox(height: 12),
-
-                      /// Make primary checkbox
-                      Row(
-                        children: [
-                          Checkbox(
-                            value: makePrimary,
-                            onChanged: (value) => setModalState(
-                              () => makePrimary = value ?? false,
-                            ),
-                          ),
-                          const Text(
-                            'Make primary',
-                            style: TextStyle(fontSize: 14),
-                          ),
-                        ],
-                      ),
-
-                      const SizedBox(height: 20),
-
-                      /// Buttons Row
-                      Row(
-                        children: [
-                          // Add button
-                          ElevatedButton(
-                            onPressed: () => Navigator.pop(context),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFFFF3366), // pink
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 28,
-                                vertical: 12,
-                              ),
-                            ),
-                            child: const Text(
-                              'Add',
+                        width: double.infinity,
+                        height: 493,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Payment method type',
                               style: TextStyle(
-                                color: Colors.white,
                                 fontSize: 14,
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
-                          ),
-                          const SizedBox(width: 16),
+                            const SizedBox(height: 8),
+                            DropdownButtonFormField<String>(
+                              value: selectedMethod,
+                              decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 12,
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              items: const [
+                                DropdownMenuItem(
+                                  value: 'Zelle',
+                                  child: Text('Zelle'),
+                                ),
+                                DropdownMenuItem(
+                                  value: 'PayPal',
+                                  child: Text('PayPal'),
+                                ),
+                                DropdownMenuItem(
+                                  value: 'Bank Transfer',
+                                  child: Text('Bank Transfer'),
+                                ),
+                              ],
+                              onChanged: (value) => setModalState(
+                                () => selectedMethod = value ?? 'Zelle',
+                              ),
+                            ),
 
-                          // Cancel button
-                          TextButton(
-                            onPressed: () => Navigator.pop(context),
-                            child: const Text(
-                              'Cancel',
+                            const SizedBox(height: 16),
+
+                            /// Zelle email or phone
+                            const Text(
+                              'Zelle email or phone',
                               style: TextStyle(
-                                color: Color(0xFF666666),
                                 fontSize: 14,
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
-                          ),
-                        ],
+                            const SizedBox(height: 8),
+                            TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Enter Zelle email or phone number',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 12,
+                                ),
+                              ),
+                            ),
+
+                            const SizedBox(height: 16),
+
+                            /// Name enrolled under
+                            const Text(
+                              'Name enrolled under',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Enter enrolled name',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 12,
+                                ),
+                              ),
+                            ),
+
+                            const SizedBox(height: 32),
+
+                            Padding(
+                              padding: EdgeInsetsGeometry.only(left: 4),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Transform.scale(
+                                    scale:
+                                        1.1, // keeps the checkbox proportional
+                                    child: Checkbox(
+                                      materialTapTargetSize:
+                                          MaterialTapTargetSize.shrinkWrap,
+                                      visualDensity: VisualDensity.compact,
+                                      value: makePrimary,
+                                      onChanged: (value) => setModalState(
+                                        () => makePrimary = value ?? false,
+                                      ),
+                                    ),
+                                  ),
+                                  const Text(
+                                    'Make primary',
+                                    style: TextStyle(fontSize: 14),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                            const SizedBox(height: 32),
+
+                            /// Buttons Row
+                            Row(
+                              children: [
+                                // Add button
+                                ElevatedButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: const Color(
+                                      0xFFFF3366,
+                                    ), // pink
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 28,
+                                      vertical: 12,
+                                    ),
+                                  ),
+                                  child: const Text(
+                                    'Add',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 16),
+
+                                // Cancel button
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  child: const Text(
+                                    'Cancel',
+                                    style: TextStyle(
+                                      color: Color(0xFF666666),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
