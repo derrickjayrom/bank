@@ -233,8 +233,9 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                                     'Cancel',
                                     style: TextStyle(
                                       color: Color(0xFF666666),
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      letterSpacing: 1.25,
                                     ),
                                   ),
                                 ),
