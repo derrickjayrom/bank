@@ -145,7 +145,9 @@ class _CustomCurrencyFieldState extends State<CustomCurrencyField> {
 
             const SizedBox(height: 32),
 
-            CustomActionButton(label: 'Request', onPressed: () {}),
+            Center(
+              child: CustomActionButton(label: 'Request', onPressed: () {}),
+            ),
           ],
         ),
       ),

@@ -48,15 +48,49 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('213340546'),
-                                  Text('Bank (UBA PLCs)'),
+                                  Text(
+                                    '213340546',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      letterSpacing: 0.5,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Bank(UBA PLC)',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      letterSpacing: 0.4,
+                                      color: Color(0xFF959595),
+                                    ),
+                                  ),
                                 ],
                               ),
                               Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                                  Text('Mustapha Diyaol-Haqq'),
-                                  Text('Primary'),
+                                  Text(
+                                    'Mustapha Diyaol-Haqq',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
+                                      letterSpacing: 0.4,
+                                      color: Color(0xFF666666),
+                                    ),
+                                  ),
+                                  Text(
+                                    'Primary',
+                                    textAlign: TextAlign.end,
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      letterSpacing: 0.4,
+                                      color: Color(0xFFD68E00),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ],
@@ -75,12 +109,41 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('213340546'),
-                                  Text('Bank (UBA PLCs)'),
+                                  Text(
+                                    '213340546',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      letterSpacing: 0.5,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Bank(UBA PLC)',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      letterSpacing: 0.4,
+                                      color: Color(0xFF959595),
+                                    ),
+                                  ),
                                 ],
                               ),
-                              Column(children: [Text('Mustapha Diyaol-Haqq')]),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    'Mustapha Diyaol-Haqq',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
+                                      letterSpacing: 0.4,
+                                      color: Color(0xFF666666),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                           SizedBox(height: 32),
