@@ -1,6 +1,6 @@
 import 'package:bank/widget/chartdata.dart';
 import 'package:bank/widget/custom_appbar.dart';
-import 'package:bank/widget/total_revenue.dart';
+import 'package:bank/widget/revenue_summary.dart';
 import 'package:bank/widget/stat_container.dart';
 import 'package:bank/widget/summary_card.dart';
 import 'package:flutter/material.dart';
@@ -24,11 +24,11 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              /// Header
+              
               const CustomAppbar(),
               const SizedBox(height: 36),
 
-              /// Revenue Section
+              
               RevenueSummary(
                 title: "Available to withdraw",
                 amount: '\$9,476.00',
@@ -38,7 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
               const SizedBox(height: 28),
 
-              /// Stats Grid
               GridView.count(
                 shrinkWrap: true,
                 crossAxisCount: 2,

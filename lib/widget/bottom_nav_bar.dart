@@ -23,13 +23,13 @@ class BottomNavBar extends StatelessWidget {
       {
         'outline': 'assets/icons/wallet.svg',
         'active': 'assets/icons/wallet_active.svg',
-        'label': 'Wallet',
+        'label': 'Withdrawals',
         'type': 'svg',
       },
       {
         'outline': 'assets/icons/store.svg',
         'active': 'assets/icons/store_active.svg',
-        'label': 'Store',
+        'label': 'Stores',
         'type': 'svg',
       },
       {

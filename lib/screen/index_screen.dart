@@ -1,4 +1,5 @@
 import 'package:bank/screen/home_screen.dart';
+import 'package:bank/screen/stores.dart';
 import 'package:bank/screen/withdrawals.dart';
 import 'package:bank/widget/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class _IndexScreenState extends State<IndexScreen> {
         children: [
           HomeScreen(),
           Withdrawals(date: now),
-          Container(color: Colors.red),
+          Stores(),
           Container(color: Colors.white),
           Container(color: Colors.amber),
         ],

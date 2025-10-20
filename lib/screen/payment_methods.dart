@@ -127,12 +127,14 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
+                                letterSpacing: 0.25,
                               ),
                             ),
                             const SizedBox(height: 8),
                             TextField(
                               decoration: InputDecoration(
                                 hintText: 'Enter Zelle email or phone number',
+                                hintStyle: TextStyle(color: Colors.grey),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(8),
                                 ),
@@ -145,10 +147,11 @@ class _PaymentMethodsState extends State<PaymentMethods> {
 
                             const SizedBox(height: 16),
 
-                            /// Name enrolled under
+                            //
                             const Text(
                               'Name enrolled under',
                               style: TextStyle(
+                                letterSpacing: 0.25,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -156,6 +159,7 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                             const SizedBox(height: 8),
                             TextField(
                               decoration: InputDecoration(
+                                hintStyle: TextStyle(color: Colors.grey),
                                 hintText: 'Enter enrolled name',
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(8),
