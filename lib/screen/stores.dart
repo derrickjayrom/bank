@@ -13,7 +13,7 @@ class _StoresState extends State<Stores> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        padding: EdgeInsets.only(top: 64, left: 24, right: 24),
+        padding: EdgeInsets.only(top: 64, left: 24, right: 24, bottom: 24),
         child: Column(
           children: [
             Center(
@@ -57,11 +57,14 @@ class _StoresState extends State<Stores> {
                 ),
               ),
             ),
-            RevenueSummary(
-              title: 'Total revenue (USD)',
-              amount: "160.00",
-              changeValue: '+\$48.2',
-              changeLabel: '30.8%',
+            Padding(
+              padding: EdgeInsetsGeometry.only(top: 40),
+              child: RevenueSummary(
+                title: 'Total revenue (USD)',
+                amount: "160.00",
+                changeValue: '+\$48.2',
+                changeLabel: '30.8%',
+              ),
             ),
             SizedBox(height: 32),
             Row(
@@ -190,15 +193,204 @@ class _StoresState extends State<Stores> {
               child: Column(
                 children: [
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
-                          Expanded(child: Text('Store details')),
+                          Expanded(
+                            child: Text(
+                              'Store details',
+                              style: TextStyle(
+                                color: Color(0xFF666666),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: 0.5,
+                              ),
+                            ),
+                          ),
                           Icon(Icons.edit, size: 12),
-                          Text('Edit'),
+                          SizedBox(width: 8),
+                          Container(
+                            padding: EdgeInsets.only(bottom: 0.2),
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(color: Colors.black),
+                              ),
+                            ),
+                            child: Text(
+                              'Edit',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: 0.25,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
+                      SizedBox(height: 24),
+                      Text(
+                        'Hair Store',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 0.15,
+                        ),
+                      ),
+                      Text(
+                        'www.storedomain.com',
+                        style: TextStyle(
+                          color: Color(0xFFFF8086),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 0.4,
+                          decoration: TextDecoration.underline,
+                          decorationColor: Color(0xFFFF8086),
+                          decorationThickness: 2,
+                        ),
+                      ),
                     ],
+                  ),
+                  SizedBox(height: 24),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Created',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFF666666),
+                          letterSpacing: 0.4,
+                        ),
+                      ),
+                      Text(
+                        'In progress',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xFF666666),
+                          letterSpacing: 0.4,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 12),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Last payout',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFF666666),
+                          letterSpacing: 0.4,
+                        ),
+                      ),
+                      Text(
+                        '\$415.55',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xFF666666),
+                          letterSpacing: 0.4,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 12),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Went live',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFF666666),
+                          letterSpacing: 0.4,
+                        ),
+                      ),
+                      Text(
+                        'January 10, 2025',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xFF666666),
+                          letterSpacing: 0.4,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 24),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 0.001),
+                      color: Color(0xFFF2F2F2),
+                    ),
+                    height: 0,
+                    width: double.infinity,
+                  ),
+                  SizedBox(height: 24),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Last payout',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFF666666),
+                          letterSpacing: 0.4,
+                        ),
+                      ),
+                      Text(
+                        '\$415.55',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xFF666666),
+                          letterSpacing: 0.4,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 24),
+            Container(
+              height: 110,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              padding: EdgeInsets.all(25),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Recent Activities',
+                    style: TextStyle(
+                      color: Color(0xFF666666),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.5,
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  Expanded(
+                    child: Text(
+                      'No activities',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 0.4,
+                        color: Color(0xFF959595),
+                      ),
+                    ),
                   ),
                 ],
               ),
