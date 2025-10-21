@@ -6,7 +6,6 @@ class RevenueSummary extends StatefulWidget {
   final String changeValue;
   final String changeLabel;
   final Color changeColor;
- 
 
   const RevenueSummary({
     super.key,
@@ -32,7 +31,12 @@ class _RevenueSummaryState extends State<RevenueSummary> {
         children: [
           Text(
             widget.title,
-            style: const TextStyle(fontSize: 12, color: Colors.black54),
+            style: const TextStyle(
+              fontSize: 12,
+              color: Colors.black54,
+              letterSpacing: 0.4,
+              fontWeight: FontWeight.w500,
+            ),
           ),
           const SizedBox(height: 8),
           Text(
