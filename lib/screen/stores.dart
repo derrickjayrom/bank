@@ -12,7 +12,7 @@ class _StoresState extends State<Stores> {
   String selectedStore = 'Hair Store';
   String website = 'www.storedomain.com';
 
-  /// Draggable Bottom Sheet for store switching
+
   void _showStoreSwitcherBottomSheet(BuildContext context) {
     final stores = [
       'Hair Store',
@@ -129,7 +129,7 @@ class _StoresState extends State<Stores> {
     );
   }
 
-  /// Draggable Bottom Sheet for editing store details
+  
   void _showEditBottomSheet(BuildContext context) {
     TextEditingController nameController = TextEditingController(
       text: selectedStore,
@@ -475,7 +475,7 @@ class _StoresState extends State<Stores> {
                           const Icon(Icons.edit, size: 12),
                           const SizedBox(width: 8),
 
-                          /// EDIT trigger added here
+                         
                           InkWell(
                             onTap: () => _showEditBottomSheet(context),
                             child: Container(
@@ -521,7 +521,7 @@ class _StoresState extends State<Stores> {
                     ],
                   ),
 
-                  /// your rest of the unchanged details
+                  
                   const SizedBox(height: 24),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
