@@ -121,7 +121,6 @@ class _PaymentMethodsState extends State<PaymentMethods> {
 
                             const SizedBox(height: 16),
 
-                      
                             const Text(
                               'Zelle email or phone',
                               style: TextStyle(
@@ -147,7 +146,6 @@ class _PaymentMethodsState extends State<PaymentMethods> {
 
                             const SizedBox(height: 16),
 
-                            
                             const Text(
                               'Name enrolled under',
                               style: TextStyle(

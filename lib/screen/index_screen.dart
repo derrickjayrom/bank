@@ -1,5 +1,7 @@
 import 'package:bank/screen/home_screen.dart';
+import 'package:bank/screen/profile.dart';
 import 'package:bank/screen/stores.dart';
+import 'package:bank/screen/vitualcard.dart';
 import 'package:bank/screen/withdrawals.dart';
 import 'package:bank/widget/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
@@ -25,8 +27,8 @@ class _IndexScreenState extends State<IndexScreen> {
           HomeScreen(),
           Withdrawals(date: now),
           Stores(),
-          Container(color: Colors.white),
-          Container(color: Colors.amber),
+          Vitualcard(),
+          Profile(),
         ],
       ),
 
