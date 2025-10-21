@@ -131,7 +131,7 @@ class _ProfileState extends State<Profile> {
               ),
             ),
             Container(
-              padding: EdgeInsets.all(16),
+              padding: EdgeInsets.only(top: 16, bottom: 0, left: 16, right: 16),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -146,13 +146,121 @@ class _ProfileState extends State<Profile> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Icon(Icons.edit, size: 16),
+                      Icon(Icons.subscriptions_outlined, size: 16),
+                      SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          'Subscriptions',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                      Spacer(),
+                      Icon(Icons.arrow_forward_ios, size: 16),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 24),
+            Container(
+              padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(12),
+                  topRight: Radius.circular(12),
+                ),
+                border: BoxBorder.fromLTRB(
+                  bottom: BorderSide(color: Color(0xFFF2F2F2)),
+                ),
+              ),
+              height: 50,
+              width: double.infinity,
+
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.notifications_active_outlined, size: 16),
                       SizedBox(width: 8),
                       Text(
-                        'Edit profile',
+                        'Notification settings',
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 14,
                           fontWeight: FontWeight.w500,
+                          letterSpacing: 0.25,
+                        ),
+                      ),
+                      Spacer(),
+                      Icon(Icons.arrow_forward_ios, size: 16),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+
+                border: BoxBorder.fromLTRB(
+                  bottom: BorderSide(color: Color(0xFFF2F2F2)),
+                ),
+              ),
+              height: 50,
+              width: double.infinity,
+
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.edit_attributes, size: 16),
+                      SizedBox(width: 8),
+                      Text(
+                        'Edit login methods',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 0.25,
+                        ),
+                      ),
+                      Spacer(),
+                      Icon(Icons.arrow_forward_ios, size: 16),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(12),
+                  bottomRight: Radius.circular(12),
+                ),
+                border: BoxBorder.fromLTRB(
+                  bottom: BorderSide(color: Color(0xFFF2F2F2)),
+                ),
+              ),
+              height: 50,
+              width: double.infinity,
+
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.arrow_forward, size: 16),
+                      SizedBox(width: 8),
+                      Text(
+                        'Sign out',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 0.25,
                         ),
                       ),
                       Spacer(),

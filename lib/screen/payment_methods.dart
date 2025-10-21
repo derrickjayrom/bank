@@ -90,7 +90,7 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                             ),
                             const SizedBox(height: 8),
                             DropdownButtonFormField<String>(
-                              value: selectedMethod,
+                              initialValue: selectedMethod,
                               decoration: InputDecoration(
                                 contentPadding: const EdgeInsets.symmetric(
                                   horizontal: 12,

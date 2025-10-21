@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
               RevenueSummary(
                 title: "Available to withdraw",
                 amount: '\$9,476.00',
-                changeValue: '\+\$48.2',
+                changeValue: '+\$48.2',
                 changeLabel: 'this week.',
               ),
 
