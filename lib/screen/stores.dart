@@ -12,7 +12,6 @@ class _StoresState extends State<Stores> {
   String selectedStore = 'Hair Store';
   String website = 'www.storedomain.com';
 
-
   void _showStoreSwitcherBottomSheet(BuildContext context) {
     final stores = [
       'Hair Store',
@@ -129,7 +128,6 @@ class _StoresState extends State<Stores> {
     );
   }
 
-  
   void _showEditBottomSheet(BuildContext context) {
     TextEditingController nameController = TextEditingController(
       text: selectedStore,
@@ -205,56 +203,42 @@ class _StoresState extends State<Stores> {
                       ),
                     ),
                   ),
-
-                  const SizedBox(height: 16),
-                  const Text(
-                    'Website',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                  SizedBox(height: 16),
+                  Text(
+                    'Select categories you not want us to sell in your store',
                   ),
-                  const SizedBox(height: 8),
-                  TextField(
-                    controller: websiteController,
-                    decoration: InputDecoration(
-                      hintText: 'Enter website link',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 12,
-                      ),
-                    ),
-                  ),
-
-                  const SizedBox(height: 32),
-
+                  SizedBox(height: 10),
                   Center(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          selectedStore = nameController.text.trim();
-                          website = websiteController.text.trim();
-                        });
-                        Navigator.pop(context);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
+                    child: Row(
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              selectedStore = nameController.text.trim();
+                              website = websiteController.text.trim();
+                            });
+                            Navigator.pop(context);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color(0xFFFF2C5E),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(99),
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 40,
+                              vertical: 12,
+                            ),
+                          ),
+                          child: const Text(
+                            'Save',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                            ),
+                          ),
                         ),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 40,
-                          vertical: 12,
-                        ),
-                      ),
-                      child: const Text(
-                        'Save changes',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                        ),
-                      ),
+                      ],
                     ),
                   ),
                 ],
@@ -278,7 +262,6 @@ class _StoresState extends State<Stores> {
         ),
         child: Column(
           children: [
-            /// Store selector wrapped in InkWell
             Center(
               child: InkWell(
                 borderRadius: BorderRadius.circular(8),
@@ -326,7 +309,6 @@ class _StoresState extends State<Stores> {
               ),
             ),
 
-            /// Keep everything else unchanged
             Padding(
               padding: const EdgeInsets.only(top: 40),
               child: RevenueSummary(
@@ -475,7 +457,6 @@ class _StoresState extends State<Stores> {
                           const Icon(Icons.edit, size: 12),
                           const SizedBox(width: 8),
 
-                         
                           InkWell(
                             onTap: () => _showEditBottomSheet(context),
                             child: Container(
@@ -521,7 +502,6 @@ class _StoresState extends State<Stores> {
                     ],
                   ),
 
-                  
                   const SizedBox(height: 24),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

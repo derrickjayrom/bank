@@ -1,3 +1,4 @@
+import 'package:bank/screen/financials.dart';
 import 'package:bank/screen/subscriptions.dart';
 import 'package:flutter/material.dart';
 
@@ -96,40 +97,48 @@ class _ProfileState extends State<Profile> {
               ),
             ),
             SizedBox(height: 24),
-            Container(
-              padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                  topRight: Radius.circular(12),
-                ),
-                border: BoxBorder.fromLTRB(
-                  bottom: BorderSide(color: Color(0xFFF2F2F2)),
-                ),
-              ),
-              height: 50,
-              width: double.infinity,
-
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Icon(Icons.receipt, size: 16),
-                      SizedBox(width: 8),
-                      Text(
-                        'Financials',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          letterSpacing: 0.25,
-                        ),
-                      ),
-                      Spacer(),
-                      Icon(Icons.arrow_forward_ios, size: 16),
-                    ],
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Financials()),
+                );
+              },
+              child: Container(
+                padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(12),
+                    topRight: Radius.circular(12),
                   ),
-                ],
+                  border: BoxBorder.fromLTRB(
+                    bottom: BorderSide(color: Color(0xFFF2F2F2)),
+                  ),
+                ),
+                height: 50,
+                width: double.infinity,
+
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.receipt, size: 16),
+                        SizedBox(width: 8),
+                        Text(
+                          'Financials',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: 0.25,
+                          ),
+                        ),
+                        Spacer(),
+                        Icon(Icons.arrow_forward_ios, size: 16),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
             InkWell(
