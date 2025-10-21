@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class StatCard extends StatelessWidget {
+class StatCard extends StatefulWidget {
   final String title;
   final String value;
   final String? changeText;
@@ -19,19 +19,23 @@ class StatCard extends StatelessWidget {
   });
 
   @override
+  State<StatCard> createState() => _StatCardState();
+}
+
+class _StatCardState extends State<StatCard> {
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: widget.onTap,
       child: Container(
         height: 90,
         width: 171,
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: backgroundColor ?? Colors.white,
+          color: widget.backgroundColor ?? Colors.white,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-             
               color: Colors.black.withOpacity(0.04),
               blurRadius: 6,
               offset: const Offset(0, 2),
@@ -43,7 +47,7 @@ class StatCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              title,
+              widget.title,
               style: const TextStyle(
                 fontSize: 13,
                 color: Colors.black54,
@@ -52,32 +56,32 @@ class StatCard extends StatelessWidget {
             ),
             const SizedBox(height: 6),
             Text(
-              value,
+              widget.value,
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
                 color: Colors.black,
               ),
             ),
-            if (changeText != null || subText != null)
+            if (widget.changeText != null || widget.subText != null)
               Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: Row(
                   children: [
-                    if (changeText != null)
+                    if (widget.changeText != null)
                       Text(
-                        changeText!,
+                        widget.changeText!,
                         style: const TextStyle(
                           fontSize: 12,
                           color: Colors.red,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                    if (subText != null)
+                    if (widget.subText != null)
                       Padding(
                         padding: const EdgeInsets.only(left: 4),
                         child: Text(
-                          subText!,
+                          widget.subText!,
                           style: const TextStyle(
                             fontSize: 12,
                             color: Color(0xFF8A8A8A),

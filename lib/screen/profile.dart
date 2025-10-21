@@ -1,3 +1,4 @@
+import 'package:bank/screen/subscriptions.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatefulWidget {
@@ -51,6 +52,7 @@ class _ProfileState extends State<Profile> {
                       Text(
                         'diyaolhaqq@gmail.com',
                         style: TextStyle(
+                          color: Color(0xFF666666),
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
                           letterSpacing: 0.4,
@@ -130,38 +132,51 @@ class _ProfileState extends State<Profile> {
                 ],
               ),
             ),
-            Container(
-              padding: EdgeInsets.only(top: 16, bottom: 0, left: 16, right: 16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(12),
-                  bottomRight: Radius.circular(12),
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Subscriptions()),
+                );
+              },
+              child: Container(
+                padding: EdgeInsets.only(
+                  top: 16,
+                  bottom: 0,
+                  left: 16,
+                  right: 16,
                 ),
-              ),
-              height: 50,
-              width: double.infinity,
-              child: Column(
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Icon(Icons.subscriptions_outlined, size: 16),
-                      SizedBox(width: 8),
-                      Expanded(
-                        child: Text(
-                          'Subscriptions',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(12),
+                    bottomRight: Radius.circular(12),
+                  ),
+                ),
+                height: 50,
+                width: double.infinity,
+                child: Column(
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Icon(Icons.subscriptions_outlined, size: 16),
+                        SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            'Subscriptions',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
-                      ),
-                      Spacer(),
-                      Icon(Icons.arrow_forward_ios, size: 16),
-                    ],
-                  ),
-                ],
+                        Spacer(),
+                        Icon(Icons.arrow_forward_ios, size: 16),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
             SizedBox(height: 24),
